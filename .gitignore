@@ -28,17 +28,17 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Proguard folder (optional, if exists)
+# Proguard folder
 proguard/
 
-# Kotlin specific (if applicable)
+# Kotlin specific
 *.kotlin_module
 
-# Others (if you use any local keystore or secret files)
+# Others (local keystore)
 *.jks
 *.keystore
 
-# Node modules (if you have a frontend part using Node.js)
+# Node modules
 /node_modules/
 
 # Miscellaneous
