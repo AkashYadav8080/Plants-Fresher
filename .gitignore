@@ -1,15 +1,45 @@
+# IntelliJ/Android Studio related files
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+.gradle/
+.local.properties
+.idea/
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+
+# Build outputs
+/build/
+/app/build/
+
+# Captures and screenshots
+/captures/
+
+# External native build folders
+.externalNativeBuild/
+/.cxx/
+
+# Gradle Wrapper files
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Log files
+*.log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Proguard folder (optional, if exists)
+proguard/
+
+# Kotlin specific (if applicable)
+*.kotlin_module
+
+# Others (if you use any local keystore or secret files)
+*.jks
+*.keystore
+
+# Node modules (if you have a frontend part using Node.js)
+/node_modules/
+
+# Miscellaneous
+*.lock
