@@ -11,7 +11,7 @@
         </shape>
     </item>
 
-    <!-- Checked state -->
+    <!-- Checked state - Important changes here -->
     <item android:state_checked="true">
         <layer-list>
             <item>
@@ -20,7 +20,10 @@
                     <size android:width="20dp" android:height="20dp"/>
                 </shape>
             </item>
-            <item android:drawable="@drawable/ic_checkmark" android:gravity="center"/>
+            <item android:drawable="@drawable/ic_checkmark"
+                android:width="12dp"
+                android:height="12dp"
+                android:gravity="center"/>
         </layer-list>
     </item>
 </selector>

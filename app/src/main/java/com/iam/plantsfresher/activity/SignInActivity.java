@@ -1,6 +1,10 @@
 package com.iam.plantsfresher.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +16,10 @@ import com.iam.plantsfresher.R;
 
 public class SignInActivity extends AppCompatActivity {
 
+    ImageButton backButton;
+    Button loginButton;
+    TextView txtForgotPassword,txtSignUp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,5 +30,28 @@ public class SignInActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+//        backButton = findViewById(R.id.backButton);
+        loginButton = findViewById(R.id.loginButton);
+        txtForgotPassword = findViewById(R.id.txtForgotPassword);
+        txtSignUp = findViewById(R.id.txtSignUp);
+
+        loginButton.setOnClickListener(v -> {
+            Intent a = new Intent(SignInActivity.this, MainActivity.class);
+            startActivity(a);
+        });
+
+        txtForgotPassword.setOnClickListener(v -> {
+            Intent a = new Intent(SignInActivity.this, ForgotPassActivity.class);
+            startActivity(a);
+        });
+
+        txtSignUp.setOnClickListener(v -> {
+            Intent a = new Intent(SignInActivity.this, SignUpActivity.class);
+            startActivity(a);
+        });
+
+
     }
 }

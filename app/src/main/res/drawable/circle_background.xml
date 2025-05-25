@@ -1,6 +1,6 @@
 <!-- res/drawable/circle_background.xml -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
-    <solid android:color="@color/gray"/>
+    <solid android:color="#FAEDED"/>
 <!--    <solid android:color="#66000000" />  &lt;!&ndash; Semi-transparent black &ndash;&gt;-->
 </shape>

@@ -19,21 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/circle_background"
-        android:scaleType="centerInside"
-        android:src="@drawable/back"
-        android:padding="5dp"
-        android:contentDescription="Back button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
     <LinearLayout
         android:id="@+id/textContainer"
         android:layout_width="0dp"
@@ -63,7 +48,7 @@
 
             <TextView
                 android:id="@+id/plants"
-                android:layout_width="120dp"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rouge_script"
                 android:gravity="center"
@@ -110,7 +95,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Full Name"
+            android:hint="Email"
             android:textColor="#000000"
             android:textSize="16sp" />
     </LinearLayout>
@@ -151,7 +136,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:id="@+id/checkbox"
         android:gravity="center_vertical"
@@ -165,10 +150,11 @@
             android:textColor="@color/black"
             android:button="@drawable/circular_checkbox"
             android:paddingStart="8dp"
+            android:background="@null"
             android:textSize="14sp"/>
 
         <TextView
-            android:id="@+id/forgotPassword"
+            android:id="@+id/txtForgotPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -210,6 +196,7 @@
             />
 
         <TextView
+            android:id="@+id/txtSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Sign up"
