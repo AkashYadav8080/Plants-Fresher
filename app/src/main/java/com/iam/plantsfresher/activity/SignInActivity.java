@@ -16,7 +16,6 @@ import com.iam.plantsfresher.R;
 
 public class SignInActivity extends AppCompatActivity {
 
-    ImageButton backButton;
     Button loginButton;
     TextView txtForgotPassword,txtSignUp;
 
@@ -32,7 +31,7 @@ public class SignInActivity extends AppCompatActivity {
         });
 
 
-//        backButton = findViewById(R.id.backButton);
+//      find views
         loginButton = findViewById(R.id.loginButton);
         txtForgotPassword = findViewById(R.id.txtForgotPassword);
         txtSignUp = findViewById(R.id.txtSignUp);
