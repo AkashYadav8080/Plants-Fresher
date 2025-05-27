@@ -40,4 +40,11 @@ dependencies {
 
     // lottie
     implementation 'com.airbnb.android:lottie:6.6.6'
+
+    // circluar image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // chip view
+    implementation 'com.robertlevonyan.view:MaterialChipView:3.0.8'
+
 }

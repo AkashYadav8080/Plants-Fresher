@@ -7,4 +7,7 @@
     <color name="dark_green">#325a3e</color>
     <color name="gray">#a6a6a6</color>
 
+
+    <color name="chip_background_color">#FFFFFF</color>
+    <color name="chip_stroke_color">#CCCCCC</color>
 </resources>
