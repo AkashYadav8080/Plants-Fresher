@@ -1,7 +1,6 @@
 package com.iam.plantsfresher.helper;
 
 import android.app.Application;
-import com.onesignal.Continue;
 import com.onesignal.OneSignal;
 import com.onesignal.debug.LogLevel;
 import com.iam.plantsfresher.BuildConfig;

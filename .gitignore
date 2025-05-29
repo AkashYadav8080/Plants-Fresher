@@ -1,7 +1,7 @@
 # IntelliJ/Android Studio related files
 *.iml
 .gradle/
-.local.properties
+local.properties
 .idea/
 .DS_Store
 
