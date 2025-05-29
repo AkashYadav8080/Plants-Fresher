@@ -7,9 +7,7 @@ import com.onesignal.debug.LogLevel;
 import com.iam.plantsfresher.BuildConfig;
 
 public class ApplicationClass extends Application {
-//    private static final String ONESIGNAL_APP_ID = "bb3c3f99-5628-42f3-92d8-a0495fe77a06";
     private static final String ONESIGNAL_APP_ID = BuildConfig.ONESIGNAL_APP_ID;
-
 
     @Override
     public void onCreate() {
