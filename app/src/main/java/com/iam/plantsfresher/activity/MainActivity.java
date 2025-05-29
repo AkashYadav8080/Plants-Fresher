@@ -20,6 +20,8 @@ import com.iam.plantsfresher.fragment.HangFragment;
 import com.iam.plantsfresher.fragment.HomeFragment;
 import com.iam.plantsfresher.fragment.ProfileFragment;
 import com.iam.plantsfresher.fragment.WishlistFragment;
+import com.onesignal.Continue;
+import com.onesignal.OneSignal;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Use this method to prompt for push notifications.
+        // We recommend removing this method after testing and instead use In-App Messages to prompt for notification permission.
+        OneSignal.getNotifications().requestPermission(false, Continue.none());
 
         // Initialize views
         bottomNavigationView = findViewById(R.id.bottomNavigationView);

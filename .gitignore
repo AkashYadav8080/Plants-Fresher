@@ -43,3 +43,6 @@ proguard/
 
 # Miscellaneous
 *.lock
+
+# Firebase config
+google-services.json
