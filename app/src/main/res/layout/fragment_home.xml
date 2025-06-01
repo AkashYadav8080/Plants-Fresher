@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_below="@+id/titleText"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_bg"
         android:gravity="center_vertical"
@@ -65,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/searchContainer"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
         android:id="@+id/chipSelectors"
         android:fillViewport="true"
@@ -133,7 +133,7 @@
         android:id="@+id/plantsRecycler"
         android:clipToPadding="true"
         android:layout_below="@+id/chipSelectors"
-        android:layout_marginHorizontal="15dp"
+        android:layout_marginHorizontal="10dp"
         />
 
 </RelativeLayout>

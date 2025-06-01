@@ -4,19 +4,18 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="?attr/colorPrimary">
+    android:background="@color/light_green">
 
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/splash"
-        android:layout_gravity="start"/>
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Plants Fresher"
-        android:textColor="@android:color/white"
         android:textSize="18sp"
         android:layout_marginTop="8dp"/>
 </LinearLayout>
