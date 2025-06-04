@@ -1,27 +1,32 @@
 package com.iam.plantsfresher.model;
 
+import java.util.List;
+
 public class PlantsModel {
     private String id;
     private String name;
     private String category;
-    private double price;
-    private float rating;
+    private String description;
+    private List<String> careInstruction;
+    private double realPrice;
+    private double offeredPrice;
+
     private String imageUrl;
 
-    // Empty constructor for Firestore
     public PlantsModel() {
     }
 
-    public PlantsModel(String id, String name, String category, double price, float rating, String imageUrl) {
+    public PlantsModel(String id, String name, String category, String description, List<String> careInstruction, double realPrice, double offeredPrice, String imageUrl) {
         this.id = id;
         this.name = name;
         this.category = category;
-        this.price = price;
-        this.rating = rating;
+        this.description = description;
+        this.careInstruction = careInstruction;
+        this.realPrice = realPrice;
+        this.offeredPrice = offeredPrice;
         this.imageUrl = imageUrl;
     }
 
-    // Getters and Setters
     public String getId() {
         return id;
     }
@@ -46,20 +51,36 @@ public class PlantsModel {
         this.category = category;
     }
 
-    public double getPrice() {
-        return price;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public float getRating() {
-        return rating;
+    public List<String> getCareInstruction() {
+        return careInstruction;
     }
 
-    public void setRating(float rating) {
-        this.rating = rating;
+    public void setCareInstruction(List<String> careInstruction) {
+        this.careInstruction = careInstruction;
+    }
+
+    public double getRealPrice() {
+        return realPrice;
+    }
+
+    public void setRealPrice(double realPrice) {
+        this.realPrice = realPrice;
+    }
+
+    public double getOfferedPrice() {
+        return offeredPrice;
+    }
+
+    public void setOfferedPrice(double offeredPrice) {
+        this.offeredPrice = offeredPrice;
     }
 
     public String getImageUrl() {

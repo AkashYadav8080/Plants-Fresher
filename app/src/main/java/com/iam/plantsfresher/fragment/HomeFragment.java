@@ -16,6 +16,7 @@ import com.iam.plantsfresher.adapter.PlantsAdapter;
 import com.iam.plantsfresher.model.PlantsModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -35,14 +36,16 @@ public class HomeFragment extends Fragment {
 
         List<PlantsModel> plantsModelList = new ArrayList<>();
 
-        plantsModelList.add(new PlantsModel("P1","Plant","Recommend",33.33,4,"https://www.paudhewale.com/s/660a356584d1ac2391ae69de/663e24ed0a34072ed684c807/paudhewale-1-.png"));
-        plantsModelList.add(new PlantsModel("P1","Plant","Top",233.33,4,"https://www.paudhewale.com/s/660a356584d1ac2391ae69de/663e24ed0a34072ed684c807/paudhewale-1-.png"));
-        plantsModelList.add(new PlantsModel("P1","Plant","Indoor",73.00,5,"https://www.paudhewale.com/s/660a356584d1ac2391ae69de/663e24ed0a34072ed684c807/paudhewale-1-.png"));
-        plantsModelList.add(new PlantsModel("P1","Plant","Outdoor",23.5,4,"https://www.paudhewale.com/s/660a356584d1ac2391ae69de/663e24ed0a34072ed684c807/paudhewale-1-.png"));
-        plantsModelList.add(new PlantsModel("P1","Plant","Dry",23.33,5,"https://www.paudhewale.com/s/660a356584d1ac2391ae69de/663e24ed0a34072ed684c807/paudhewale-1-.png"));
-        plantsModelList.add(new PlantsModel("P1","Plant","Water",2.33,4,"https://www.paudhewale.com/s/660a356584d1ac2391ae69de/663e24ed0a34072ed684c807/paudhewale-1-.png"));
-//        plantsModelList.add(new PlantsModel("P1","Plant","Dry",233.33,4,""));
-//        plantsModelList.add(new PlantsModel("P1","Plant","water",233.33,4,""));
+        plantsModelList.add(new PlantsModel(
+                "P1",
+                "Aloe Vera",
+                "Recommend",
+                "Aloe vera is a natural plant",
+                Arrays.asList("Bright, indirect light", "Water when top soil is dry"),
+                33.00,
+                30.00,
+                "https://extension.sdstate.edu/sites/default/files/2024-04/W-01884-02-Houseplant-How-To-Aloe-Vera.jpg"
+        ));
 
 
         PlantsAdapter plantsAdapter = new PlantsAdapter(getContext(),plantsModelList);

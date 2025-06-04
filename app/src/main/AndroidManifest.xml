@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- user permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
-
+        android:name=".helper.ApplicationClass"
         android:allowBackup="true"
-        android:fitsSystemWindows="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fitsSystemWindows="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".helper.ApplicationClass"
         android:theme="@style/Theme.PlantsFresher"
         tools:targetApi="31">
-
+        <activity
+            android:name=".activity.PlantsDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.ForgotPassActivity"
             android:exported="false" />
