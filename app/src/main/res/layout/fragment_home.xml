@@ -1,139 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".fragment.HomeFragment"
+android:fitsSystemWindows="true">
+
+<!-- Change ScrollView to NestedScrollView -->
+<androidx.core.widget.NestedScrollView
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HomeFragment">
+    android:fillViewport="true">
 
-    <!-- Title Text -->
-    <TextView
-        android:id="@+id/titleText"
+    <LinearLayout
+        android:id="@+id/scrollContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+            <!-- Title Text -->
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:lineHeight="35dp"
+                android:text="Let's find \nyour plants!"
+                android:textColor="@color/dark_green"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <!-- Search Layout -->
+            <LinearLayout
+                android:id="@+id/searchContainer"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Search Icon"
+                    android:src="@drawable/search" />
+
+                <EditText
+                    android:id="@+id/edtSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="Search"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Mic Icon"
+                    android:src="@drawable/mic" />
+            </LinearLayout>
+
+            <!-- Chip View -->
+            <HorizontalScrollView
+                android:id="@+id/chipSelectors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="8dp"
+                android:fillViewport="true"
+                android:scrollbars="none">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipAll"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="All"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        app:chipStrokeColor="@color/chip_stroke_color" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipRecommend"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recommend"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        app:chipStrokeColor="@color/chip_stroke_color" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipTop"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Top"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        app:chipStrokeColor="@color/chip_stroke_color" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipIndoor"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Indoor"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        app:chipStrokeColor="@color/chip_stroke_color" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipOutdoor"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Outdoor"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        app:chipStrokeColor="@color/chip_stroke_color" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipDroughtPlants"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Drought Plants"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        app:chipStrokeColor="@color/chip_stroke_color" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipWetlandPlants"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wetland Plants"
+                        app:chipBackgroundColor="@color/chip_background_color"
+                        app:chipStrokeColor="@color/chip_stroke_color" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/plantsRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:nestedScrollingEnabled="false"
+            android:clipToPadding="false"
+            android:layout_marginBottom="8dp"
+            android:minHeight="400dp"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
+
+    <!-- Scroll to top button -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabScrollToTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:lineHeight="35dp"
-        android:text="Let's find \nyour plants!"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:text="Top"
         android:textColor="@color/dark_green"
-        android:textSize="26sp"
-        android:textStyle="bold" />
-
-
-    <!-- Search Layout -->
-    <LinearLayout
-        android:id="@+id/searchContainer"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_below="@+id/titleText"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_bg"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="User Icon"
-            android:src="@drawable/search" />
-
-        <EditText
-            android:id="@+id/edtSearch"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:hint="Search"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="User Icon"
-            android:src="@drawable/mic" />
-
-    </LinearLayout>
-
-<!--    chip view-->
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/searchContainer"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/chipSelectors"
-        android:fillViewport="true"
-        android:scrollbars="none">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:selectionRequired="true"
-            app:singleSelection="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipRecommend"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recommend"
-                app:chipBackgroundColor="@color/chip_background_color"
-                app:chipStrokeColor="@color/chip_stroke_color" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipTop"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Top"
-                app:chipBackgroundColor="@color/chip_background_color"
-                app:chipStrokeColor="@color/chip_stroke_color" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipIndoor"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Indoor"
-                app:chipBackgroundColor="@color/chip_background_color"
-                app:chipStrokeColor="@color/chip_stroke_color" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipOutdoor"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Outdoor"
-                app:chipBackgroundColor="@color/chip_background_color"
-                app:chipStrokeColor="@color/chip_stroke_color" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipDry"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dry Plants"
-                app:chipBackgroundColor="@color/chip_background_color"
-                app:chipStrokeColor="@color/chip_stroke_color" />
-        </com.google.android.material.chip.ChipGroup>
-
-    </HorizontalScrollView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/plantsRecycler"
-        android:clipToPadding="true"
-        android:layout_below="@+id/chipSelectors"
-        android:layout_marginHorizontal="10dp"
-        />
-
+        android:backgroundTint="@color/light_green"
+        app:icon="@drawable/baseline_keyboard_double_arrow_up_24"
+        android:visibility="gone" />
 </RelativeLayout>

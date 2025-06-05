@@ -10,13 +10,21 @@ public class PlantsModel {
     private List<String> careInstruction;
     private double realPrice;
     private double offeredPrice;
-
+    private int quantity;
     private String imageUrl;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public PlantsModel() {
     }
 
-    public PlantsModel(String id, String name, String category, String description, List<String> careInstruction, double realPrice, double offeredPrice, String imageUrl) {
+    public PlantsModel(String id, String name, String category, String description, List<String> careInstruction, double realPrice, double offeredPrice, int quantity, String imageUrl) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -24,6 +32,7 @@ public class PlantsModel {
         this.careInstruction = careInstruction;
         this.realPrice = realPrice;
         this.offeredPrice = offeredPrice;
+        this.quantity = quantity;
         this.imageUrl = imageUrl;
     }
 
