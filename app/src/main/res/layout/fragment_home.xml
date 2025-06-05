@@ -164,7 +164,7 @@ android:fitsSystemWindows="true">
             android:layout_marginHorizontal="10dp"
             android:nestedScrollingEnabled="false"
             android:clipToPadding="false"
-            android:layout_marginBottom="8dp"
+            android:paddingBottom="8dp"
             android:minHeight="400dp"/>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

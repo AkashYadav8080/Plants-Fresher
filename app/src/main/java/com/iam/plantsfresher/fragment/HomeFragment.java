@@ -29,8 +29,8 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView plantsRecycler;
     private PlantsAdapter plantsAdapter;
-    private List<PlantsModel> plantsModelList = new ArrayList<>();
-    private List<PlantsModel> allPlantsList = new ArrayList<>();
+    List<PlantsModel> plantsModelList = new ArrayList<>();
+    List<PlantsModel> allPlantsList = new ArrayList<>();
     private ExtendedFloatingActionButton fabScrollToTop;
     private boolean isBottomNavVisible = true;
 

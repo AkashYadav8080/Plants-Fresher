@@ -44,7 +44,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/btnAction"
+                android:id="@+id/btnShare"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_share_24"
@@ -135,16 +135,34 @@
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
-            <!-- Price -->
-            <TextView
-                android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginTop="16dp"
-                android:text="$29.99"
-                android:textColor="@color/dark_green"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+                >
+                <!-- Off Price -->
+                <TextView
+                    android:id="@+id/tvOffPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$9.99"
+                    android:textColor="@color/dark_green"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <!-- Real Price -->
+                <TextView
+                    android:id="@+id/tvRealPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$19.99"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#424242"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
 
             <!-- Description -->
             <TextView
@@ -176,44 +194,31 @@
                 android:textStyle="bold" />
 
             <LinearLayout
+                android:id="@+id/layoutCareInstructions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:layout_marginTop="16dp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/placeholder" />
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:orientation="horizontal">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bright, indirect light"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-            </LinearLayout>
+<!--                <ImageView-->
+<!--                    android:layout_width="24dp"-->
+<!--                    android:layout_height="24dp"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:src="@drawable/ic_care_instructions" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/placeholder" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Water when top soil is dry"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Water when top soil is dry"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="14sp" />-->
+<!--            </LinearLayout>-->
 
             <!-- Reviews Section -->
             <TextView

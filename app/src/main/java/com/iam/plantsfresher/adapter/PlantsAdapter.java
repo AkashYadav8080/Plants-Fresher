@@ -21,8 +21,8 @@ import java.util.List;
 
 public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.PlantViewHolder> {
 
-    private Context context;
-    private List<PlantsModel> plantsList;
+    Context context;
+    List<PlantsModel> plantsList;
 
     public PlantsAdapter(Context context, List<PlantsModel> plantsList) {
         this.context = context;
@@ -42,7 +42,7 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.PlantViewH
 
         holder.plantName.setText(plant.getName());
         holder.plantCategory.setText(plant.getCategory());
-        holder.plantPrice.setText(String.format("$%.2f", plant.getRealPrice()));
+        holder.offPrice.setText(String.format("$%.2f", plant.getOfferedPrice()));
 
         // Load image using Glide
         Glide.with(context)
@@ -52,10 +52,9 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.PlantViewH
 
         // navigate views
         holder.itemView.setOnClickListener(v -> {
-            Intent a = new Intent(context, PlantsDetailsActivity.class);
-            a.putExtra("plantId",""+plant.getId());
-            context.startActivity(a);
-
+            Intent intent = new Intent(context, PlantsDetailsActivity.class);
+            intent.putExtra("plant", plant);
+            context.startActivity(intent);
         });
     }
 
@@ -66,7 +65,7 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.PlantViewH
 
     public static class PlantViewHolder extends RecyclerView.ViewHolder {
         ImageView plantImage;
-        TextView plantName, plantCategory, plantPrice;
+        TextView plantName, plantCategory, offPrice;
 
 
         public PlantViewHolder(@NonNull View itemView) {
@@ -75,7 +74,7 @@ public class PlantsAdapter extends RecyclerView.Adapter<PlantsAdapter.PlantViewH
             plantImage = itemView.findViewById(R.id.plantImage);
             plantName = itemView.findViewById(R.id.plantName);
             plantCategory = itemView.findViewById(R.id.plantCategory);
-            plantPrice = itemView.findViewById(R.id.plantPrice);
+            offPrice = itemView.findViewById(R.id.offPrice);
         }
     }
 

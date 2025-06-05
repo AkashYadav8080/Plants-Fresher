@@ -1,8 +1,11 @@
 package com.iam.plantsfresher.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class PlantsModel {
+public class PlantsModel implements Parcelable {
     private String id;
     private String name;
     private String category;
@@ -99,4 +102,49 @@ public class PlantsModel {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+
+    // Add this constructor
+    protected PlantsModel(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        category = in.readString();
+        description = in.readString();
+        careInstruction = in.createStringArrayList();
+        realPrice = in.readDouble();
+        offeredPrice = in.readDouble();
+        quantity = in.readInt();
+        imageUrl = in.readString();
+    }
+
+    // Add these methods
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(category);
+        dest.writeString(description);
+        dest.writeStringList(careInstruction);
+        dest.writeDouble(realPrice);
+        dest.writeDouble(offeredPrice);
+        dest.writeInt(quantity);
+        dest.writeString(imageUrl);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<PlantsModel> CREATOR = new Creator<PlantsModel>() {
+        @Override
+        public PlantsModel createFromParcel(Parcel in) {
+            return new PlantsModel(in);
+        }
+
+        @Override
+        public PlantsModel[] newArray(int size) {
+            return new PlantsModel[size];
+        }
+    };
 }
