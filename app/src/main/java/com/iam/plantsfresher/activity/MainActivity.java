@@ -1,22 +1,17 @@
 package com.iam.plantsfresher.activity;
 
 import android.os.Bundle;
-import android.view.Gravity;
 import android.widget.ImageView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.iam.plantsfresher.R;
-import com.iam.plantsfresher.fragment.HangFragment;
+import com.iam.plantsfresher.fragment.ShoppingFragment;
 import com.iam.plantsfresher.fragment.HomeFragment;
 import com.iam.plantsfresher.fragment.ProfileFragment;
 import com.iam.plantsfresher.fragment.WishlistFragment;
@@ -99,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 currentBottomNavItemId = R.id.bottom_wishlist;
             }
         } else if (itemId == R.id.bottom_hang || itemId == R.id.side_hang) {
-            selectedFragment = new HangFragment();
+            selectedFragment = new ShoppingFragment();
             if (itemId == R.id.side_hang) {
                 bottomNavigationView.setSelectedItemId(R.id.bottom_hang);
                 currentBottomNavItemId = R.id.bottom_hang;

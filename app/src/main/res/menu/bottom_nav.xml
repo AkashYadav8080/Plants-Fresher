@@ -13,7 +13,7 @@
     />
 
     <item
-    android:title="Hang"
+    android:title="Shopping"
     android:id="@+id/bottom_hang"
     android:icon="@drawable/hang"
     />
