@@ -14,8 +14,9 @@ public class ShoppingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_shopping, container, false);
 
-        return inflater.inflate(R.layout.fragment_hang, container, false);
+        return view;
     }
 
 

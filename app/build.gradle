@@ -81,4 +81,7 @@ dependencies {
     // Configure app for multidex
     implementation "androidx.multidex:multidex:2.0.1"
 
+    // circular image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }

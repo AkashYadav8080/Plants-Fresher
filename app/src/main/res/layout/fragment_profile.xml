@@ -1,15 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.ProfileFragment">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile fragment"
-        android:layout_marginHorizontal="10dp"
-        />
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-</RelativeLayout>
+        <!-- Profile Picture -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:padding="8dp"
+            android:id="@+id/img_profile"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/userplaceholder"
+            app:civ_border_width="2dp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="#FF000000"/>
+        <!-- User Name -->
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_user_name"
+            android:layout_below="@id/img_profile"
+            android:layout_marginTop="12dp"
+            android:layout_centerHorizontal="true"
+            android:text="John Doe"
+            android:textColor="@color/dark_green"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+
+        <!-- Email -->
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_user_email"
+            android:layout_below="@id/tv_user_name"
+            android:layout_marginTop="4dp"
+            android:layout_centerHorizontal="true"
+            android:text="john.doe@example.com"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+
+        <!-- Stats Row -->
+        <LinearLayout
+            android:id="@+id/stats_container"
+            android:layout_below="@id/tv_user_email"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="12"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_green"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Purchased"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="5"
+                    android:textSize="18sp"
+                    android:textColor="@color/dark_green"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Wishlist"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Action Buttons -->
+        <Button
+            android:id="@+id/btn_edit_profile"
+            android:layout_below="@id/stats_container"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:backgroundTint="@color/dark_green"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_below="@id/btn_edit_profile"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+</ScrollView>
