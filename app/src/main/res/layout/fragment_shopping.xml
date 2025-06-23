@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="My Cart"
+            android:text="My Shopping Cart"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -26,10 +26,22 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/emptyCartText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appBar"
+        android:layout_centerInParent="true"
+        android:text="Your cart is empty"
+        android:textSize="18sp"
+        android:textColor="@color/dark_green"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartRecycler"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appBar"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"/>
 </RelativeLayout>

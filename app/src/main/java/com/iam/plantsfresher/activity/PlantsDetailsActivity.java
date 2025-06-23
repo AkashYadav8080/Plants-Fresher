@@ -22,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.iam.plantsfresher.R;
+import com.iam.plantsfresher.manager.CartManager;
 import com.iam.plantsfresher.model.PlantsModel;
 
 import java.util.List;
@@ -73,6 +74,28 @@ public class PlantsDetailsActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> onBackPressed());
 
 
+        // working of add to cart button
+        btnAddToCart.setOnClickListener(v -> {
+            PlantsModel plant = getIntent().getParcelableExtra("plant");
+            if (plant != null) {
+                CartManager.getInstance().addToCart(plant, 1);
+                Toast.makeText(this, plant.getName() + " added to cart", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+// Add this to handle wishlist button
+//        btnWishlist.setOnClickListener(v -> {
+//            // Toggle wishlist state
+//            boolean isWishlisted = false; // You'll need to implement your wishlist logic
+//            if (isWishlisted) {
+//                btnWishlist.setIconResource(R.drawable.ic_wishlist_outlined);
+//                Toast.makeText(this, "Removed from wishlist", Toast.LENGTH_SHORT).show();
+//            } else {
+//                btnWishlist.setIconResource(R.drawable.ic_wishlist_filled);
+//                Toast.makeText(this, "Added to wishlist", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     }
 
