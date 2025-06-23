@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:layout_marginHorizontal="15dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    android:backgroundTint="#E8F5E9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:gravity="center_vertical">
+
+        <!-- Plant Image -->
+        <ImageView
+            android:id="@+id/plantImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/leap"
+            android:scaleType="centerCrop"
+            android:elevation="6dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/rounded_bg"
+            android:contentDescription="Plant image" />
+
+        <!-- Text and quantity layout -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/plantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aloe vera"
+                android:textColor="#2E7D32"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/plantDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem ipsum"
+                android:textColor="#9E9E9E"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+
+            <!-- Quantity control -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+
+                <ImageButton
+                    android:id="@+id/btnMinus"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@color/light_green"
+                    android:src="@drawable/baseline_indeterminate_check_box_24"
+                    android:contentDescription="Decrease quantity"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/tvQuantity"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#2E7D32"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnPlus"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@color/light_green"
+                    android:src="@drawable/baseline_add_box_24"
+                    android:contentDescription="Increase quantity"
+                    android:scaleType="centerInside" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Price Button -->
+        <TextView
+            android:id="@+id/plantPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$20"
+            android:background="@drawable/price_rectangle_green"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp"
+            android:gravity="center" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

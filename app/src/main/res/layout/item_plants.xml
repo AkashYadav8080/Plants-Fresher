@@ -22,23 +22,26 @@
             android:scaleType="centerCrop"
             android:src="@drawable/leap" />
 
-        <TextView
-            android:id="@+id/plantName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Plant Name"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/plantCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Indoor"
+            android:layout_marginTop="8dp"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/plantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Plant Name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,7 +56,6 @@
                 android:layout_weight="1"
                 android:text="$1.00"
                 android:textColor="@color/black"
-                android:textSize="16sp"
                 android:textStyle="bold" />
 
 

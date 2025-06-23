@@ -5,11 +5,31 @@
     android:layout_height="match_parent"
     tools:context=".fragment.ShoppingFragment">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Shopping products"
-        android:layout_marginHorizontal="10dp"
-        />
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
 
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My Cart"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBar"
+        android:id="@+id/cartRecycler"
+        />
 </RelativeLayout>
