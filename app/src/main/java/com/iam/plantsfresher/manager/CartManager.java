@@ -3,6 +3,7 @@ package com.iam.plantsfresher.manager;
 import com.iam.plantsfresher.model.CartItem;
 import com.iam.plantsfresher.model.PlantsModel;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class CartManager {
@@ -77,4 +78,15 @@ public class CartManager {
     public void clearCart() {
         cartItems.clear();
     }
+
+    public void removeItem(String plantId) {
+        Iterator<CartItem> iterator = cartItems.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getPlant().getId().equals(plantId)) {
+                iterator.remove();
+                break;
+            }
+        }
+    }
+
 }

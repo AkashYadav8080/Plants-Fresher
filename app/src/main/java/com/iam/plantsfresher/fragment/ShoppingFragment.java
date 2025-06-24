@@ -36,6 +36,7 @@ public class ShoppingFragment extends Fragment {
         setupRecyclerView();
         updateCartView();
 
+
         return view;
     }
 

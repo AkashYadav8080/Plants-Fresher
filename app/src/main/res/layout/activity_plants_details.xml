@@ -2,11 +2,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:id="@+id/main"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:fillViewport="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,15 +29,14 @@
                 android:id="@+id/btnBack"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/baseline_arrow_back_ios_24"
-                />
+                android:src="@drawable/baseline_arrow_back_ios_24" />
 
             <!-- Title -->
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="16dp"
+                android:layout_weight="1"
                 android:text="Plant Details"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -47,8 +46,7 @@
                 android:id="@+id/btnShare"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/baseline_share_24"
-                />
+                android:src="@drawable/baseline_share_24" />
 
         </LinearLayout>
 
@@ -59,24 +57,22 @@
             android:layout_height="250dp"
             android:layout_below="@id/appBar"
             android:scaleType="centerCrop"
-            android:src="@drawable/placeholder"
-             />
+            android:src="@drawable/placeholder" />
 
         <!-- Favorite Button Floating on Image -->
         <Button
-            style="?attr/materialIconButtonFilledTonalStyle"
             android:id="@+id/btnWishlist"
+            style="?attr/materialIconButtonFilledTonalStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:icon="@drawable/ic_wishlist_outlined"
             android:layout_alignEnd="@id/imgPlant"
             android:layout_alignBottom="@id/imgPlant"
             android:layout_margin="16dp"
             android:backgroundTint="@color/light_green"
             android:contentDescription="Favorite"
             app:backgroundTint="@color/white"
-            app:tint="@color/light_green"
-            />
+            app:icon="@drawable/ic_wishlist_outlined"
+            app:tint="@color/light_green" />
 
         <!-- Main Content -->
         <LinearLayout
@@ -108,17 +104,16 @@
                     android:id="@+id/star"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/star"
                     android:layout_gravity="center"
-                    />
+                    android:src="@drawable/star" />
 
                 <TextView
                     android:id="@+id/tvRatingValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="4dp"
                     android:text="4.5"
-                    android:layout_gravity="center"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -139,9 +134,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="16dp"
-                >
+                android:orientation="horizontal">
                 <!-- Off Price -->
                 <TextView
                     android:id="@+id/tvOffPrice"
@@ -157,8 +151,8 @@
                     android:id="@+id/tvRealPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$19.99"
                     android:layout_marginStart="10dp"
+                    android:text="$19.99"
                     android:textColor="#424242"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -198,28 +192,28 @@
                 android:id="@+id/layoutCareInstructions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:orientation="vertical" />
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:orientation="horizontal">-->
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:orientation="horizontal">-->
 
-<!--                <ImageView-->
-<!--                    android:layout_width="24dp"-->
-<!--                    android:layout_height="24dp"-->
-<!--                    android:layout_marginEnd="8dp"-->
-<!--                    android:src="@drawable/ic_care_instructions" />-->
+            <!--                <ImageView-->
+            <!--                    android:layout_width="24dp"-->
+            <!--                    android:layout_height="24dp"-->
+            <!--                    android:layout_marginEnd="8dp"-->
+            <!--                    android:src="@drawable/ic_care_instructions" />-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Water when top soil is dry"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="14sp" />-->
-<!--            </LinearLayout>-->
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="Water when top soil is dry"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="14sp" />-->
+            <!--            </LinearLayout>-->
 
             <!-- Reviews Section -->
             <TextView
@@ -263,11 +257,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/dark_green"
                 android:text="Write a Review"
+                android:textColor="@color/white"
                 app:icon="@drawable/baseline_reviews_24"
                 app:iconGravity="start"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/dark_green"
                 app:iconTint="@color/white" />
 
             <!-- Sample Review -->
@@ -348,20 +342,93 @@
                 android:textColor="@color/dark_green"
                 android:textSize="14sp" />
 
+<!--         view cart card-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/dark_green"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                android:layout_marginBottom="100dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/btnViewCart"
+                app:cardCornerRadius="100dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/cart_item_image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/placeholder"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        app:civ_border_color="#FF000000"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@id/cart_item_image"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/view_cart_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View cart"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/cart_item_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1 ITEM"
+                            android:textColor="#FFFFFF"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/arrow_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="right arrow"
+                        android:src="@drawable/baseline_keyboard_arrow_right_24" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
             <!-- Add to Cart Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnAddToCart"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/dark_green"
                 android:text="Add to Cart - $29.99"
                 app:icon="@drawable/cart"
                 app:iconGravity="start"
-                app:iconTint="@color/white"
-                android:backgroundTint="@color/dark_green"
-                />
+                app:iconTint="@color/white" />
+
+
         </LinearLayout>
+
+
     </RelativeLayout>
 </ScrollView>

@@ -16,7 +16,7 @@ import com.iam.plantsfresher.R;
 
 public class SignInActivity extends AppCompatActivity {
 
-    Button loginButton;
+    Button btnSkipLogin,loginButton;
     TextView txtForgotPassword,txtSignUp;
 
     @Override
@@ -32,9 +32,15 @@ public class SignInActivity extends AppCompatActivity {
 
 
 //      find views
+        btnSkipLogin = findViewById(R.id.btnSkipLogin);
         loginButton = findViewById(R.id.loginButton);
         txtForgotPassword = findViewById(R.id.txtForgotPassword);
         txtSignUp = findViewById(R.id.txtSignUp);
+
+        btnSkipLogin.setOnClickListener(v -> {
+            Intent a = new Intent(SignInActivity.this, MainActivity.class);
+            startActivity(a);
+        });
 
         loginButton.setOnClickListener(v -> {
             Intent a = new Intent(SignInActivity.this, MainActivity.class);

@@ -1,5 +1,6 @@
 package com.iam.plantsfresher.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -71,6 +72,19 @@ public class MainActivity extends AppCompatActivity {
 
         // Side navigation
         navigationView.setNavigationItemSelectedListener(item -> handleNavigation(item.getItemId()));
+
+
+        // Navigate to cart fragment if intent extra is "cart"
+        Intent intent = getIntent();
+        if (intent != null && "cart".equals(intent.getStringExtra("navigateTo"))) {
+            // Replace with your actual fragment transaction code
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.nav_fragment_host, new ShoppingFragment())
+                    .commit();
+            // Highlight cart in bottom navigation if you have one
+            bottomNavigationView.setSelectedItemId(R.id.navigationView);
+        }
+
     }
 
     private boolean handleNavigation(int itemId) {

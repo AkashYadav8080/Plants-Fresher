@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
@@ -21,11 +22,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     Context context;
     private List<CartItem> cartItems;
     CartManager cartManager;
+    CartUpdateListener cartUpdateListener;
 
     public CartAdapter(Context context, List<CartItem> cartItems) {
         this.context = context;
         this.cartItems = cartItems;
         this.cartManager = CartManager.getInstance();
+
+        if (context instanceof CartUpdateListener) {
+            this.cartUpdateListener = (CartUpdateListener) context;
+        }
     }
 
     @NonNull
@@ -50,17 +56,41 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 .placeholder(R.drawable.placeholder)
                 .into(holder.plantImage);
 
+
         holder.btnMinus.setOnClickListener(v -> {
             int newQuantity = cartItem.getQuantity() - 1;
+
+            if (newQuantity <= 0) {
+                cartManager.removeItem(plant.getId());
+                cartItems.remove(position); // remove from local list
+                Toast.makeText(context, plant.getName()+" removed from cart", Toast.LENGTH_SHORT).show();
+            } else {
+                cartManager.updateQuantity(plant.getId(), newQuantity);
+                cartItem.setQuantity(newQuantity); // update local item
+            }
+
+            notifyDataSetChanged();
+
+            if (cartUpdateListener != null) {
+                cartUpdateListener.onCartUpdated();
+            }
+
+        });
+
+
+        holder.btnPlus.setOnClickListener(v -> {
+            int currentQuantity = cartItem.getQuantity();
+
+            if (currentQuantity >= 11) {
+                Toast.makeText(context, "Maximum stock limit reached", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int newQuantity = currentQuantity + 1;
             cartManager.updateQuantity(plant.getId(), newQuantity);
             notifyDataSetChanged();
         });
 
-        holder.btnPlus.setOnClickListener(v -> {
-            int newQuantity = cartItem.getQuantity() + 1;
-            cartManager.updateQuantity(plant.getId(), newQuantity);
-            notifyDataSetChanged();
-        });
     }
 
     @Override
@@ -84,6 +114,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             btnMinus = itemView.findViewById(R.id.btnMinus);
             btnPlus = itemView.findViewById(R.id.btnPlus);
         }
+    }
+
+    public interface CartUpdateListener {
+        void onCartUpdated();
     }
 
     public void updateCartItems(List<CartItem> newCartItems) {

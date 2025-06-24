@@ -2,19 +2,25 @@ package com.iam.plantsfresher.activity;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -27,15 +33,20 @@ import com.iam.plantsfresher.model.PlantsModel;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class PlantsDetailsActivity extends AppCompatActivity {
 
     public static String Tag = "PlantsDetailsActivity";
     ImageView imgPlant, btnBack,btnShare;
-    TextView tvPlantName, tvPlantCategory, tvDescription, tvOffPrice,tvRealPrice, tvRatingValue;
+    TextView tvPlantName, tvPlantCategory, tvDescription, tvOffPrice,tvRealPrice, tvRatingValue,cartItemCount;
     RatingBar ratingBarAverage;
     Button btnAddToCart,btnWishlist;
     LinearLayout layoutCareInstructions;
 
+    CardView btnViewCart;
+    CircleImageView cartItemImage;
+    private boolean isCartViewVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +84,6 @@ public class PlantsDetailsActivity extends AppCompatActivity {
         // Set click listeners
         btnBack.setOnClickListener(v -> onBackPressed());
 
-
         // working of add to cart button
         btnAddToCart.setOnClickListener(v -> {
             PlantsModel plant = getIntent().getParcelableExtra("plant");
@@ -82,20 +92,12 @@ public class PlantsDetailsActivity extends AppCompatActivity {
                 Toast.makeText(this, plant.getName() + " added to cart", Toast.LENGTH_SHORT).show();
             }
 
-        });
+            // Update the view cart card
+            updateViewCartCard(plant);
 
-// Add this to handle wishlist button
-//        btnWishlist.setOnClickListener(v -> {
-//            // Toggle wishlist state
-//            boolean isWishlisted = false; // You'll need to implement your wishlist logic
-//            if (isWishlisted) {
-//                btnWishlist.setIconResource(R.drawable.ic_wishlist_outlined);
-//                Toast.makeText(this, "Removed from wishlist", Toast.LENGTH_SHORT).show();
-//            } else {
-//                btnWishlist.setIconResource(R.drawable.ic_wishlist_filled);
-//                Toast.makeText(this, "Added to wishlist", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+            // Show the view cart card with animation
+            showViewCartCard();
+        });
 
     }
 
@@ -113,6 +115,29 @@ public class PlantsDetailsActivity extends AppCompatActivity {
         ratingBarAverage = findViewById(R.id.ratingBarAverage);
         layoutCareInstructions = findViewById(R.id.layoutCareInstructions);
         btnAddToCart = findViewById(R.id.btnAddToCart);
+
+        btnViewCart = findViewById(R.id.btnViewCart);
+        cartItemImage = findViewById(R.id.cart_item_image);
+        cartItemCount = findViewById(R.id.cart_item_count);
+
+        // Set click listener for view cart button
+        btnViewCart.setOnClickListener(v -> {
+            // Navigate to cart fragment
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("navigateTo", "cart");
+            startActivity(intent);
+            hideViewCartCard();
+        });
+
+//        ScrollView scrollView = findViewById(R.id.main);
+//        scrollView.getViewTreeObserver().addOnScrollChangedListener(() -> {
+//            int scrollY = scrollView.getScrollY();
+//            if (scrollY > 100) { // If scrolled down more than 100px
+//                hideViewCartCard();
+//            } else {
+//                showViewCartCard();
+//            }
+//        });
     }
 
     private void bindDataToViews(PlantsModel plant) {
@@ -161,7 +186,6 @@ public class PlantsDetailsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     void  sharePlants(PlantsModel plant){
         if (plant != null) {
             String shareText = "🌿 *" + plant.getName() + "*\n\n"
@@ -179,5 +203,59 @@ public class PlantsDetailsActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Plant data not available", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // update view cart
+    private void updateViewCartCard(PlantsModel plant) {
+        // Load plant image
+        Glide.with(this)
+                .load(plant.getImageUrl())
+                .placeholder(R.drawable.placeholder)
+                .into(cartItemImage);
+
+        // Update item count
+        int cartItemCount = CartManager.getInstance().getCartItems().size();
+        String itemText = cartItemCount == 1 ? "1 ITEM" : cartItemCount + " ITEMS";
+        this.cartItemCount.setText(itemText);
+    }
+
+    private void showViewCartCard() {
+        if (!isCartViewVisible) {
+            isCartViewVisible = true;
+            btnViewCart.setVisibility(View.VISIBLE);
+
+            // Set initial position below the screen
+            btnViewCart.setTranslationY(btnViewCart.getHeight());
+
+            // Animate up
+            btnViewCart.animate()
+                    .translationY(0)
+                    .setDuration(500)
+                    .setInterpolator(new DecelerateInterpolator())
+                    .start();
+        }
+    }
+    private void hideViewCartCard() {
+        if (isCartViewVisible) {
+            isCartViewVisible = false;
+            btnViewCart.animate()
+                    .translationY(btnViewCart.getHeight())
+                    .setDuration(300)
+                    .setInterpolator(new AccelerateInterpolator())
+                    .withEndAction(() -> btnViewCart.setVisibility(View.GONE))
+                    .start();
+        }
+    }
+
+    // Add this to prevent hiding when clicking on the card itself
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (isCartViewVisible) {
+            Rect viewRect = new Rect();
+            btnViewCart.getGlobalVisibleRect(viewRect);
+            if (!viewRect.contains((int) ev.getRawX(), (int) ev.getRawY())) {
+                hideViewCartCard();
+            }
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }

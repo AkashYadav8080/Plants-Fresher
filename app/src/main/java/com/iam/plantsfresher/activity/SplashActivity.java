@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // navigate to home screen
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
             startActivity(intent);
             finish();
         },500);
