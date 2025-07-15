@@ -1,6 +1,7 @@
 package com.iam.plantsfresher.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -10,9 +11,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.iam.plantsfresher.R;
 
 public class SplashActivity extends AppCompatActivity {
+
+    private static final String PREFS_NAME = "LoginPrefs";
+    private static final String KEY_REMEMBER = "remember";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +31,20 @@ public class SplashActivity extends AppCompatActivity {
             return insets;
         });
 
-        // navigate to home screen
+        // Check if user is already logged in
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
-            startActivity(intent);
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            boolean rememberMe = sharedPreferences.getBoolean(KEY_REMEMBER, false);
+
+            if (currentUser != null && rememberMe) {
+                // User is logged in and "Remember Me" was checked - go to MainActivity
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            } else {
+                // User is not logged in or didn't check "Remember Me" - go to SignInActivity
+                startActivity(new Intent(SplashActivity.this, SignInActivity.class));
+            }
             finish();
-        },500);
+        }, 1000); // 1 second delay
     }
 }
