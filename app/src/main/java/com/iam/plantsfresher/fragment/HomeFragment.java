@@ -1,10 +1,12 @@
 package com.iam.plantsfresher.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +20,7 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.iam.plantsfresher.R;
 import com.iam.plantsfresher.activity.MainActivity;
+import com.iam.plantsfresher.activity.SearchActivity;
 import com.iam.plantsfresher.adapter.PlantsAdapter;
 import com.iam.plantsfresher.model.PlantsModel;
 
@@ -34,12 +37,16 @@ public class HomeFragment extends Fragment {
     private ExtendedFloatingActionButton fabScrollToTop;
     private boolean isBottomNavVisible = true;
 
+    TextView txtSearch;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         plantsRecycler = view.findViewById(R.id.plantsRecycler);
+        txtSearch = view.findViewById(R.id.txtSearch);
         fabScrollToTop = view.findViewById(R.id.fabScrollToTop);
 
         // Initialize plants data
@@ -56,6 +63,11 @@ public class HomeFragment extends Fragment {
 
         // Setup scroll to top button
         setupScrollToTopButton();
+
+        txtSearch.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), SearchActivity.class);
+            startActivity(intent);
+        });
 
         return view;
     }
