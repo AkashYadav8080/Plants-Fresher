@@ -34,8 +34,8 @@ public class SignInActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private SharedPreferences sharedPreferences;
     private static final String PREFS_NAME = "LoginPrefs";
-    private static final String KEY_EMAIL = "email";
-    private static final String KEY_PASSWORD = "password";
+    public static final String KEY_EMAIL = "email";
+    public static final String KEY_PASSWORD = "password";
     private static final String KEY_REMEMBER = "remember";
 
     @Override
@@ -102,7 +102,8 @@ public class SignInActivity extends AppCompatActivity {
                             if (rememberMe.isChecked()) {
                                 saveLoginDetails(email, password);
                             } else {
-                                clearLoginDetails();
+//                                clearLoginDetails();
+                                clearSavedCredentials();
                             }
 
                             // Check if email is verified
@@ -146,6 +147,14 @@ public class SignInActivity extends AppCompatActivity {
         editor.remove(KEY_EMAIL);
         editor.remove(KEY_PASSWORD);
         editor.putBoolean(KEY_REMEMBER, false);
+        editor.apply();
+    }
+
+    private void clearSavedCredentials() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(KEY_EMAIL);
+        editor.remove(KEY_PASSWORD);
+        // Don't modify KEY_REMEMBER here
         editor.apply();
     }
 }

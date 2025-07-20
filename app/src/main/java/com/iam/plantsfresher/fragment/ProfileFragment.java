@@ -1,5 +1,8 @@
 package com.iam.plantsfresher.fragment;
 
+import static com.iam.plantsfresher.activity.SignInActivity.KEY_EMAIL;
+import static com.iam.plantsfresher.activity.SignInActivity.KEY_PASSWORD;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -81,12 +84,28 @@ public class ProfileFragment extends Fragment {
         updateUI();
     }
 
+//    private void updateUI() {
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        boolean rememberMe = sharedPreferences.getBoolean(KEY_REMEMBER, false);
+//
+//        if (currentUser != null && rememberMe) {
+//            // User is logged in
+//            loginBeforeLayout.setVisibility(View.GONE);
+//            loginAfterLayout.setVisibility(View.VISIBLE);
+//            fetchUserData(currentUser.getUid());
+//        } else {
+//            // User is not logged in
+//            loginBeforeLayout.setVisibility(View.VISIBLE);
+//            loginAfterLayout.setVisibility(View.GONE);
+//        }
+//    }
+
     private void updateUI() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        boolean rememberMe = sharedPreferences.getBoolean(KEY_REMEMBER, false);
 
-        if (currentUser != null && rememberMe) {
-            // User is logged in
+        // Only check Firebase auth state, not rememberMe
+        if (currentUser != null) {
+            // User is logged in (regardless of rememberMe)
             loginBeforeLayout.setVisibility(View.GONE);
             loginAfterLayout.setVisibility(View.VISIBLE);
             fetchUserData(currentUser.getUid());
@@ -96,7 +115,6 @@ public class ProfileFragment extends Fragment {
             loginAfterLayout.setVisibility(View.GONE);
         }
     }
-
     private void fetchUserData(String userId) {
         db.collection("PlantsFresher").document("Users").collection("Users").document(userId)
                 .get()
@@ -139,18 +157,36 @@ public class ProfileFragment extends Fragment {
         Toast.makeText(getContext(), "Edit profile feature coming soon", Toast.LENGTH_SHORT).show();
     }
 
+//    private void logoutUser() {
+//        mAuth.signOut();
+//
+//        // Clear remember me preference
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putBoolean(KEY_REMEMBER, false);
+//        editor.apply();
+//
+//        // Show logout message
+//        Toast.makeText(getContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
+//
+//        // Refresh the activity to clear any cached data
+//        Intent intent = new Intent(getActivity(), MainActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(intent);
+//        requireActivity().finish();
+//    }
+
     private void logoutUser() {
         mAuth.signOut();
 
-        // Clear remember me preference
+        // Clear all login preferences on logout
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(KEY_REMEMBER, false);
+        editor.remove(KEY_EMAIL);
+        editor.remove(KEY_PASSWORD);
+        editor.putBoolean(KEY_REMEMBER, false); // Explicitly set rememberMe to false
         editor.apply();
 
-        // Show logout message
         Toast.makeText(getContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
 
-        // Refresh the activity to clear any cached data
         Intent intent = new Intent(getActivity(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
