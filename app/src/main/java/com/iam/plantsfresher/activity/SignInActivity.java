@@ -3,6 +3,7 @@ package com.iam.plantsfresher.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -23,6 +24,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.iam.plantsfresher.R;
+import com.qdesk.toasty.Toaster;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -109,18 +111,27 @@ public class SignInActivity extends AppCompatActivity {
                             // Check if email is verified
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null && user.isEmailVerified()) {
+
+                                Toaster.success(SignInActivity.this, "Login successful!");
                                 startActivity(new Intent(SignInActivity.this, MainActivity.class));
                                 finish();
+//                                new Handler().postDelayed(() -> {
+//                                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
+//                                    finish();
+//                                },2000);
+
                             } else {
-                                Toast.makeText(SignInActivity.this,
-                                        "Please verify your email address first.",
-                                        Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(SignInActivity.this,
+//                                        "Please verify your email address first.",
+//                                        Toast.LENGTH_SHORT).show();
+                                Toaster.warning(this, "Please verify your email address first.");
                                 mAuth.signOut();
                             }
                         } else {
-                            Toast.makeText(SignInActivity.this,
-                                    "Authentication failed: " + task.getException().getMessage(),
-                                    Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(SignInActivity.this,
+//                                    "Authentication failed: " + task.getException().getMessage(),
+//                                    Toast.LENGTH_SHORT).show();
+                            Toaster.error(this, "Authentication failed: " + task.getException().getMessage());
                         }
                     });
         });

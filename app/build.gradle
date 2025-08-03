@@ -86,4 +86,7 @@ dependencies {
     // circular image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    // fancy toast
+    implementation 'com.github.qdeskdev:Android-Library:1.0.2'
+
 }
