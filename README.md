@@ -30,7 +30,7 @@
 
 - **Platform:** Android (Java)
 - **Architecture:** MVVM / Clean Architecture
-- **UI:** Jetpack Compose or XML-based UI (depending on implementation)
+- **UI:** XML-based UI (depending on implementation)
 - **Database:** Firebase
 - **Networking:** Retrofit + Gson
 - **Other:** Firebase (Analytics, Cloud Messaging), Glide/Picasso (Image Loading)
@@ -70,4 +70,5 @@ Open a pull request
 
 ---
 
-Let me know if you'd like it tailored for a specific tech stack (e.g., Compose UI, Firebase Realtime DB, etc.) or hosted repository link.
+Let me know if you'd like it tailored for a specific tech stack (e.g., Material UI, Firebase Realtime DB, etc.).
+
