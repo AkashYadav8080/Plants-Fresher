@@ -60,15 +60,18 @@ This project is licensed under the MIT License. See LICENSE for more information
 
 🤝 Contribution
 We welcome contributions from the community.
+---
 
 Fork the project
-
+```
 Create your feature branch: git checkout -b feature/YourFeature
 Commit your changes: git commit -m 'Add your feature'
 Push to the branch: git push origin feature/YourFeature
 Open a pull request
 
+```
 ---
 
 Let me know if you'd like it tailored for a specific tech stack (e.g., Material UI, Firebase Realtime DB, etc.).
+
 
