@@ -41,7 +41,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/AkashYadav8080/plants-fresher.git
+   git clone https://github.com/AkashYadav8080/Plants-Fresher.git
 2. Open in Android Studio
 
 3. Build the project
@@ -73,5 +73,6 @@ Open a pull request
 ---
 
 Let me know if you'd like it tailored for a specific tech stack (e.g., Material UI, Firebase Realtime DB, etc.).
+
 
 
