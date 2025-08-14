@@ -69,9 +69,7 @@ Push to the branch: git push origin feature/YourFeature
 Open a pull request
 
 ```
----
 
-Let me know if you'd like it tailored for a specific tech stack (e.g., Material UI, Firebase Realtime DB, etc.).
 
 
 
