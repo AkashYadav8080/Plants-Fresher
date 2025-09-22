@@ -55,6 +55,7 @@ Internet Access – For shopping and downloading plant data
 Notifications – For reminders and order updates
 
 📄 License
+
 This project is licensed under the MIT License. See LICENSE for more information.
 
 🤝 Contribution
@@ -69,6 +70,7 @@ Push to the branch: git push origin feature/YourFeature
 Open a pull request
 
 ```
+
 
 
 
