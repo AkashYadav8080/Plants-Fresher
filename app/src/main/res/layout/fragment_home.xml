@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/main"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".fragment.HomeFragment"
-android:fitsSystemWindows="true">
-
-<!-- Change ScrollView to NestedScrollView -->
-<androidx.core.widget.NestedScrollView
-    android:id="@+id/scrollView"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fitsSystemWindows="true"
+    tools:context=".fragment.HomeFragment">
 
-    <LinearLayout
-        android:id="@+id/scrollContent"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-            <!-- Title Text -->
+        <LinearLayout
+            android:id="@+id/scrollContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/titleText"
                 android:layout_width="wrap_content"
@@ -35,7 +32,6 @@ android:fitsSystemWindows="true">
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
-            <!-- Search Layout -->
             <LinearLayout
                 android:id="@+id/searchContainer"
                 android:layout_width="match_parent"
@@ -61,8 +57,8 @@ android:fitsSystemWindows="true">
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:hint="Search"
                     android:gravity="center_vertical"
+                    android:hint="Search"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
@@ -74,7 +70,6 @@ android:fitsSystemWindows="true">
                     android:src="@drawable/mic" />
             </LinearLayout>
 
-            <!-- Chip View -->
             <HorizontalScrollView
                 android:id="@+id/chipSelectors"
                 android:layout_width="match_parent"
@@ -157,31 +152,28 @@ android:fitsSystemWindows="true">
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
-            <!-- RecyclerView -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/plantsRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:nestedScrollingEnabled="false"
-            android:clipToPadding="false"
-            android:paddingBottom="8dp"
-            android:minHeight="400dp"/>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/plantsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:clipToPadding="false"
+                android:minHeight="400dp"
+                android:nestedScrollingEnabled="false"
+                android:paddingBottom="8dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-
-    <!-- Scroll to top button -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabScrollToTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/light_green"
         android:text="Top"
         android:textColor="@color/dark_green"
-        android:backgroundTint="@color/light_green"
-        app:icon="@drawable/baseline_keyboard_double_arrow_up_24"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:icon="@drawable/baseline_keyboard_double_arrow_up_24" />
 </RelativeLayout>

@@ -25,15 +25,14 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ImageView imgMenu;
     DrawerLayout drawerLayout;
-    int currentBottomNavItemId = R.id.bottom_home; // Track only bottom nav items
+    int currentBottomNavItemId = R.id.bottom_home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Use this method to prompt for push notifications.
-        // We recommend removing this method after testing and instead use In-App Messages to prompt for notification permission.
+        // Push notifications.
         OneSignal.getNotifications().requestPermission(false, Continue.none());
 
         // Initialize views
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         imgMenu = findViewById(R.id.imgMenu);
         drawerLayout = findViewById(R.id.drawerLayout);
 
-        // Cart button
         ImageView cart = findViewById(R.id.cart);
         cart.setOnClickListener(v -> {
             // Handle cart click
@@ -57,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Load HomeFragment by default
         if (savedInstanceState == null) {
             loadFragment(new HomeFragment());
             bottomNavigationView.setSelectedItemId(R.id.bottom_home);
@@ -66,22 +63,17 @@ public class MainActivity extends AppCompatActivity {
 
         // Bottom navigation
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            currentBottomNavItemId = item.getItemId(); // Update current bottom nav item
+            currentBottomNavItemId = item.getItemId();
             return handleNavigation(item.getItemId());
         });
 
-        // Side navigation
         navigationView.setNavigationItemSelectedListener(item -> handleNavigation(item.getItemId()));
 
-
-        // Navigate to cart fragment if intent extra is "cart"
         Intent intent = getIntent();
         if (intent != null && "cart".equals(intent.getStringExtra("navigateTo"))) {
-            // Replace with your actual fragment transaction code
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_fragment_host, new ShoppingFragment())
                     .commit();
-            // Highlight cart in bottom navigation if you have one
             bottomNavigationView.setSelectedItemId(R.id.navigationView);
         }
 
@@ -90,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean handleNavigation(int itemId) {
         Fragment selectedFragment = null;
 
-        // Close drawer if it's open
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
