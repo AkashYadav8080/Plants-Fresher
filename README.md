@@ -1,7 +1,7 @@
 # 🌱 Plants-Fresher
 
 <div align="center">
-  <img src="docs/app_icon.png" alt="Plants-Fresher Logo" width="120"/>
+  <!-- <img src="docs/app_icon.png" alt="Plants-Fresher Logo" width="120"/> -->
   
   [![Android](https://img.shields.io/badge/Platform-Android-green.svg)](https://developer.android.com/)
   [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg)](https://android-arsenal.com/api?level=21)
@@ -257,30 +257,14 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on our co
 - 🎨 UI/UX design refinements
 - 🌐 Localization and translations
 - ✅ Test coverage expansion
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-```
-MIT License
-
-Copyright (c) 2025 Akash Yadav
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files...
-```
-
+  
 ---
 
 ## 👨‍💻 Author
 
 **Akash Yadav**
 - GitHub: [@AkashYadav8080](https://github.com/AkashYadav8080)
-- Email: your.email@example.com
-
+  
 ---
 
 ## 🙏 Acknowledgments
@@ -310,7 +294,6 @@ If you encounter any issues or have questions:
 - [ ] AR visualization for plant placement
 - [ ] Integration with smart home watering systems
 - [ ] Plant marketplace for user-to-user sales
-- [ ] iOS version
 
 ---
 
@@ -318,3 +301,4 @@ If you encounter any issues or have questions:
   <p>Made with 💚 by plant lovers, for plant lovers</p>
   <p>⭐ Star this repo if you find it helpful!</p>
 </div>
+
