@@ -88,5 +88,5 @@ dependencies {
 
     // fancy toast
     implementation 'com.github.qdeskdev:Android-Library:1.0.2'
-
+    implementation 'com.google.code.gson:gson:2.10.1'
 }

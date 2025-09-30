@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +20,7 @@ import java.util.List;
 public class ShoppingFragment extends Fragment {
 
     private RecyclerView cartRecycler;
-    private TextView emptyCartText;
+    private LinearLayout emptyCartLayout;
     private CartAdapter cartAdapter;
     private CartManager cartManager;
 
@@ -31,11 +31,10 @@ public class ShoppingFragment extends Fragment {
 
         cartManager = CartManager.getInstance();
         cartRecycler = view.findViewById(R.id.cartRecycler);
-        emptyCartText = view.findViewById(R.id.emptyCartText); // Add this TextView to your layout
+        emptyCartLayout = view.findViewById(R.id.emptyCartLayout);
 
         setupRecyclerView();
         updateCartView();
-
 
         return view;
     }
@@ -50,10 +49,10 @@ public class ShoppingFragment extends Fragment {
         List<CartItem> cartItems = cartManager.getCartItems();
         if (cartItems.isEmpty()) {
             cartRecycler.setVisibility(View.GONE);
-            emptyCartText.setVisibility(View.VISIBLE);
+            emptyCartLayout.setVisibility(View.VISIBLE);
         } else {
             cartRecycler.setVisibility(View.VISIBLE);
-            emptyCartText.setVisibility(View.GONE);
+            emptyCartLayout.setVisibility(View.GONE);
             cartAdapter.updateCartItems(cartItems);
         }
     }

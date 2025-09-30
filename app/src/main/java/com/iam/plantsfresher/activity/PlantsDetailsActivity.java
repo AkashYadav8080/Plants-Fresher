@@ -26,9 +26,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.iam.plantsfresher.R;
 import com.iam.plantsfresher.manager.CartManager;
+import com.iam.plantsfresher.manager.WishlistManager;
 import com.iam.plantsfresher.model.PlantsModel;
 
 import java.util.List;
@@ -38,15 +40,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class PlantsDetailsActivity extends AppCompatActivity {
 
     public static String Tag = "PlantsDetailsActivity";
-    ImageView imgPlant, btnBack,btnShare;
-    TextView tvPlantName, tvPlantCategory, tvDescription, tvOffPrice,tvRealPrice, tvRatingValue,cartItemCount;
+    ImageView imgPlant, btnBack, btnShare;
+    TextView tvPlantName, tvPlantCategory, tvDescription, tvOffPrice, tvRealPrice, tvRatingValue, cartItemCount;
     RatingBar ratingBarAverage;
-    Button btnAddToCart,btnWishlist;
+    Button btnAddToCart;
+    MaterialButton btnWishlist;
     LinearLayout layoutCareInstructions;
 
     CardView btnViewCart;
     CircleImageView cartItemImage;
     private boolean isCartViewVisible = false;
+
+    private PlantsModel currentPlant;
+    private WishlistManager wishlistManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,22 +65,24 @@ public class PlantsDetailsActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Initialize wishlist manager
+        wishlistManager = WishlistManager.getInstance(this);
+
         // Initialize views
         initViews();
 
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            extras.setClassLoader(PlantsModel.class.getClassLoader());  // Set ClassLoader explicitly
-            PlantsModel plant = extras.getParcelable("plant");
+            extras.setClassLoader(PlantsModel.class.getClassLoader());
+            currentPlant = extras.getParcelable("plant");
 
-            if (plant != null) {
-                bindDataToViews(plant);
-                btnShare.setOnClickListener(v -> sharePlants(plant));
-
+            if (currentPlant != null) {
+                bindDataToViews(currentPlant);
+                updateWishlistButton();
+                btnShare.setOnClickListener(v -> sharePlants(currentPlant));
             } else {
                 Log.e(Tag, "Plant object is null");
-                finish();  // Close activity if data is missing
+                finish();
             }
         } else {
             Log.e(Tag, "No extras found in intent");
@@ -84,21 +92,18 @@ public class PlantsDetailsActivity extends AppCompatActivity {
         // Set click listeners
         btnBack.setOnClickListener(v -> onBackPressed());
 
-        // working of add to cart button
+        // Wishlist button click
+        btnWishlist.setOnClickListener(v -> toggleWishlist());
+
+        // Add to cart button
         btnAddToCart.setOnClickListener(v -> {
-            PlantsModel plant = getIntent().getParcelableExtra("plant");
-            if (plant != null) {
-                CartManager.getInstance().addToCart(plant, 1);
-                Toast.makeText(this, plant.getName() + " added to cart", Toast.LENGTH_SHORT).show();
+            if (currentPlant != null) {
+                CartManager.getInstance().addToCart(currentPlant, 1);
+                Toast.makeText(this, currentPlant.getName() + " added to cart", Toast.LENGTH_SHORT).show();
+                updateViewCartCard(currentPlant);
+                showViewCartCard();
             }
-
-            // Update the view cart card
-            updateViewCartCard(plant);
-
-            // Show the view cart card with animation
-            showViewCartCard();
         });
-
     }
 
     private void initViews() {
@@ -120,25 +125,35 @@ public class PlantsDetailsActivity extends AppCompatActivity {
         cartItemImage = findViewById(R.id.cart_item_image);
         cartItemCount = findViewById(R.id.cart_item_count);
 
-        // Set click listener for view cart button
         btnViewCart.setOnClickListener(v -> {
-            // Navigate to cart fragment
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("navigateTo", "cart");
             startActivity(intent);
             hideViewCartCard();
         });
-
-//        ScrollView scrollView = findViewById(R.id.main);
-//        scrollView.getViewTreeObserver().addOnScrollChangedListener(() -> {
-//            int scrollY = scrollView.getScrollY();
-//            if (scrollY > 100) { // If scrolled down more than 100px
-//                hideViewCartCard();
-//            } else {
-//                showViewCartCard();
-//            }
-//        });
     }
+
+    private void toggleWishlist() {
+        if (currentPlant == null) return;
+
+        if (wishlistManager.isInWishlist(currentPlant.getId())) {
+            wishlistManager.removeFromWishlist(currentPlant.getId());
+            Toast.makeText(this, "Removed from wishlist", Toast.LENGTH_SHORT).show();
+        } else {
+            wishlistManager.addToWishlist(currentPlant);
+            Toast.makeText(this, "Added to wishlist", Toast.LENGTH_SHORT).show();
+        }
+        updateWishlistButton();
+    }
+
+    private void updateWishlistButton() {
+        if (currentPlant != null && wishlistManager.isInWishlist(currentPlant.getId())) {
+            btnWishlist.setIconResource(R.drawable.ic_wishlist_filled);
+        } else {
+            btnWishlist.setIconResource(R.drawable.ic_wishlist_outlined);
+        }
+    }
+
 
     private void bindDataToViews(PlantsModel plant) {
         try {
@@ -147,37 +162,29 @@ public class PlantsDetailsActivity extends AppCompatActivity {
                     .placeholder(R.drawable.placeholder)
                     .into(imgPlant);
 
-            // Set basic plant info
             tvPlantName.setText(plant.getName());
             tvPlantCategory.setText(plant.getCategory());
             tvDescription.setText(plant.getDescription());
 
-            // Set prices
             tvOffPrice.setText(String.format("$%.2f", plant.getOfferedPrice()));
             tvRealPrice.setText(String.format("$%.2f", plant.getRealPrice()));
             tvRealPrice.setPaintFlags(tvRealPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
             btnAddToCart.setText(String.format("Add to Cart - $%.2f", plant.getOfferedPrice()));
 
-            // Care instructions would go here if you implement them
             List<String> careInstructions = plant.getCareInstruction();
-
-            LinearLayout layoutCareInstructions = findViewById(R.id.layoutCareInstructions);
-            layoutCareInstructions.removeAllViews(); // remove previous views
-
+            layoutCareInstructions.removeAllViews();
             LayoutInflater inflater = LayoutInflater.from(this);
 
             if (careInstructions != null && !careInstructions.isEmpty()) {
                 for (String instruction : careInstructions) {
                     View itemView = inflater.inflate(R.layout.item_care_instruction, layoutCareInstructions, false);
-
                     TextView tvInstruction = itemView.findViewById(R.id.tvCareInstructions);
-                    tvInstruction.setText(instruction); // text set here
+                    tvInstruction.setText(instruction);
                     layoutCareInstructions.addView(itemView);
                 }
             }
 
-            // Rating - consider adding these to your model
             ratingBarAverage.setRating(4.2f);
             tvRatingValue.setText("4.5");
 
@@ -186,7 +193,8 @@ public class PlantsDetailsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    void  sharePlants(PlantsModel plant){
+
+    void sharePlants(PlantsModel plant) {
         if (plant != null) {
             String shareText = "🌿 *" + plant.getName() + "*\n\n"
                     + plant.getDescription() + "\n\n"
@@ -198,22 +206,18 @@ public class PlantsDetailsActivity extends AppCompatActivity {
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out this plant!");
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
 
-            // Open share dialog
             startActivity(Intent.createChooser(shareIntent, "Share via"));
         } else {
             Toast.makeText(this, "Plant data not available", Toast.LENGTH_SHORT).show();
         }
     }
 
-    // update view cart
     private void updateViewCartCard(PlantsModel plant) {
-        // Load plant image
         Glide.with(this)
                 .load(plant.getImageUrl())
                 .placeholder(R.drawable.placeholder)
                 .into(cartItemImage);
 
-        // Update item count
         int cartItemCount = CartManager.getInstance().getCartItems().size();
         String itemText = cartItemCount == 1 ? "1 ITEM" : cartItemCount + " ITEMS";
         this.cartItemCount.setText(itemText);
@@ -223,11 +227,7 @@ public class PlantsDetailsActivity extends AppCompatActivity {
         if (!isCartViewVisible) {
             isCartViewVisible = true;
             btnViewCart.setVisibility(View.VISIBLE);
-
-            // Set initial position below the screen
             btnViewCart.setTranslationY(btnViewCart.getHeight());
-
-            // Animate up
             btnViewCart.animate()
                     .translationY(0)
                     .setDuration(500)
@@ -235,6 +235,7 @@ public class PlantsDetailsActivity extends AppCompatActivity {
                     .start();
         }
     }
+
     private void hideViewCartCard() {
         if (isCartViewVisible) {
             isCartViewVisible = false;
@@ -247,7 +248,6 @@ public class PlantsDetailsActivity extends AppCompatActivity {
         }
     }
 
-    // Add this to prevent hiding when clicking on the card itself
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (isCartViewVisible) {
             Rect viewRect = new Rect();

@@ -57,7 +57,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/placeholder" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnWishlist"
             style="?attr/materialIconButtonFilledTonalStyle"
             android:layout_width="wrap_content"
@@ -65,11 +65,10 @@
             android:layout_alignEnd="@id/imgPlant"
             android:layout_alignBottom="@id/imgPlant"
             android:layout_margin="16dp"
-            android:backgroundTint="@color/light_green"
             android:contentDescription="Favorite"
-            app:backgroundTint="@color/white"
             app:icon="@drawable/ic_wishlist_outlined"
-            app:tint="@color/light_green" />
+            app:iconTint="@color/light_green"
+            app:backgroundTint="@color/white" />
 
         <LinearLayout
             android:id="@+id/contentLayout"
