@@ -40,17 +40,28 @@
                     android:layout_marginStart="15dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/women" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Plants Fresher"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+
+                    />
             </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/cart"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:contentDescription="cart"
-                    android:background="@drawable/rounded_bg"
-                    android:padding="8dp"
-                    android:src="@drawable/cart" />
+            <ImageView
+                android:id="@+id/cart"
+                android:visibility="gone"
+                android:layout_width="27dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_bg"
+                android:contentDescription="cart"
+                android:padding="8dp"
+                android:src="@drawable/cart" />
 
 
         </LinearLayout>
