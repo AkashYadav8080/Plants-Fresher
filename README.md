@@ -174,7 +174,6 @@ Plants-Fresher/
 ├── CONTRIBUTING.md
 └── LICENSE
 ```
-
 ---
 
 ## 🔐 Permissions
@@ -286,19 +285,7 @@ If you encounter any issues or have questions:
 
 ---
 
-## 🗺️ Roadmap
-
-- [ ] Dark mode support
-- [ ] Plant disease detection using ML
-- [ ] Social features (share plant progress, connect with other plant parents)
-- [ ] AR visualization for plant placement
-- [ ] Integration with smart home watering systems
-- [ ] Plant marketplace for user-to-user sales
-
----
-
 <div align="center">
   <p>Made with 💚 by plant lovers, for plant lovers</p>
   <p>⭐ Star this repo if you find it helpful!</p>
 </div>
-
