@@ -8,7 +8,6 @@
     android:background="#F5F5F5"
     tools:context=".activity.SearchActivity">
 
-    <!-- Top Bar with Back Button and Search -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -74,7 +73,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Search Results RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSearch"
         android:layout_width="match_parent"
@@ -82,9 +80,8 @@
         android:layout_below="@id/topBar"
         android:padding="8dp"
         android:clipToPadding="false"
-        android:scrollbars="vertical" />
+        android:scrollbars="none" />
 
-    <!-- No Results Found -->
     <LinearLayout
         android:id="@+id/tvNoResults"
         android:layout_width="match_parent"
@@ -122,7 +119,6 @@
             android:textAlignment="center" />
     </LinearLayout>
 
-    <!-- Loading indicator (optional) -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

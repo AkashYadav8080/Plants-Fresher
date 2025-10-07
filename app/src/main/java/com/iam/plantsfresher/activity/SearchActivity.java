@@ -66,7 +66,6 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void initializePlantsData() {
-        // Initialize the same data as in HomeFragment
         allPlantsList.clear();
 
         allPlantsList.add(new PlantsModel(
@@ -179,7 +178,6 @@ public class SearchActivity extends AppCompatActivity {
             }
         }
 
-        // Update UI based on search results
         updateSearchResults();
     }
 
@@ -187,9 +185,7 @@ public class SearchActivity extends AppCompatActivity {
         if (filteredPlantsList.isEmpty() && !txtSearch.getText().toString().trim().isEmpty()) {
             recyclerViewSearch.setVisibility(View.GONE);
             tvNoResults.setVisibility(View.VISIBLE);
-//            tvNoResults.setText("No plants found for \"" + txtSearch.getText().toString().trim() + "\"");
         } else {
-            // Show results
             recyclerViewSearch.setVisibility(View.VISIBLE);
             tvNoResults.setVisibility(View.GONE);
         }
