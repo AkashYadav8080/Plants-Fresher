@@ -2,7 +2,6 @@
 
 <div align="center">
   <!-- <img src="docs/app_icon.png" alt="Plants-Fresher Logo" width="120"/> -->
-  
   [![Android](https://img.shields.io/badge/Platform-Android-green.svg)](https://developer.android.com/)
   [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg)](https://android-arsenal.com/api?level=21)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -289,3 +288,4 @@ If you encounter any issues or have questions:
   <p>Made with 💚 by plant lovers, for plant lovers</p>
   <p>⭐ Star this repo if you find it helpful!</p>
 </div>
+
